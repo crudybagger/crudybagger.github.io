@@ -33,45 +33,86 @@ heading.className = "heading";
 var h2 = document.createElement("h2");
 h2.innerHTML = "My Projects&nbsp;";
 heading.appendChild(h2);
+// Add a button to select the type of projects to be displayed based on tags
+const availableTags = ["JavaScript", "Machine Learning", "Node.js"];
+let selectedTags = []; // Default
+let showAll = true;
+
+var buttonGroup = document.createElement("div");
+buttonGroup.className = "btn-group";
+buttonGroup.role = "group";
+
+for(var i = 0; i < availableTags.length; i++) {
+    var tag = availableTags[i];
+    var button = document.createElement("button");
+    button.type = "button";
+    button.className = "btn btn-outline-primary btn-sm";
+    button.innerHTML = tag;
+    button.onclick = function() {
+        showAll = false;
+        if (selectedTags.includes(this.innerHTML)) {
+            this.className = "btn btn-outline-primary btn-sm";
+            selectedTags.splice(selectedTags.indexOf(this.innerHTML), 1);
+            if (selectedTags.length == 0) {
+                showAll = true;
+            }
+        } else {
+            this.className = "btn btn-primary btn-sm";
+            selectedTags.push(this.innerHTML);
+        }
+        console.log(selectedTags);
+        renderProjects();
+    }
+    buttonGroup.appendChild(button);
+}
+heading.appendChild(buttonGroup);
+
+
 projectContainer.appendChild(heading);
 
 var row = document.createElement("div");
 row.className = "row";
-for (var i = 0; i < Projects.length; i++) {
-    var project = Projects[i];
-    var col = document.createElement("div");
-    col.className = "col-md-6 col-lg-4";
-    var card = document.createElement("div");
-    card.className = "project-card-no-image";
-    var h3 = document.createElement("h3");
-    h3.innerHTML = project.name;
-    var h4 = document.createElement("h4");
-    h4.innerHTML = project.description;
-    var github = document.createElement("a");
-    github.className = "btn btn-outline-primary btn-sm";
-    github.role = "button";
-    github.href = project.github;
-    github.target = "_blank";
-    github.innerHTML = "Github";
-    var live = document.createElement("a");
-    live.className = "btn btn-outline-primary btn-sm";
-    live.role = "button";
-    live.href = project.live;
-    live.target = "_blank";
-    live.innerHTML = "Live";
-    var tags = document.createElement("div");
-    tags.className = "tags";
-    var tag = document.createElement("div");
-    tag.innerHTML = project.tags[0];
-    tags.appendChild(tag);
-    card.appendChild(h3);
-    card.appendChild(h4);
-    card.appendChild(github);
-    card.appendChild(live);
-    card.appendChild(tags);
-    col.appendChild(card);
-    row.appendChild(col);
+const renderProjects = () => {
+    // clear row
+    row.innerHTML = "";
+    for (var i = 0; i < Projects.length; i++) {
+        var project = Projects[i];
+        var col = document.createElement("div");
+        col.className = "col-md-6 col-lg-4";
+        var card = document.createElement("div");
+        card.className = "project-card-no-image";
+        var h3 = document.createElement("h3");
+        h3.innerHTML = project.name;
+        var h4 = document.createElement("h4");
+        h4.innerHTML = project.description;
+        var github = document.createElement("a");
+        github.className = "btn btn-outline-primary btn-sm";
+        github.role = "button";
+        github.href = project.github;
+        github.target = "_blank";
+        github.innerHTML = "Github";
+        var live = document.createElement("a");
+        live.className = "btn btn-outline-primary btn-sm";
+        live.role = "button";
+        live.href = project.live;
+        live.target = "_blank";
+        live.innerHTML = "Live";
+        var tags = document.createElement("div");
+        tags.className = "tags";
+        var tag = document.createElement("div");
+        tag.innerHTML = project.tags[0];
+        tags.appendChild(tag);
+        card.appendChild(h3);
+        card.appendChild(h4);
+        card.appendChild(github);
+        card.appendChild(live);
+        card.appendChild(tags);
+        col.appendChild(card);
+        if (selectedTags.some(tag => project.tags.includes(tag)) || showAll)
+            row.appendChild(col);
+    }
 }
+renderProjects();
 projectContainer.appendChild(row);
 
     // <div class="col-md-6 col-lg-4">

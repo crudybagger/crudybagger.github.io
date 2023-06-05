@@ -4,23 +4,27 @@ const Projects = [
         description: "A NeuroEvolution driven self learning version of classic game Flappy Bird",
         github: "https://github.com/crudybagger/NeuroEvolution-Flappy-Bird",
         live: "https://sarang.nitw.in/flappy/",
-        tags: ["JavaScript", "Machine Learning"]
+        tags: ["JavaScript", "Machine Learning", "Frontend"]
     },
     {
         name: "Highlighter",
         description: "A chrome extension to highlight any text on any website with any color you like",
         github: "https://github.com/crudybagger/Highlighter",
         live: "https://sarang.nitw.in/Highlighter/",
-        tags: ["JavaScript"]
+        tags: ["JavaScript", "Backend", "Chrome Extension"]
     },
     {
         name: "BlockChain",
         description: "A useful API to build a BlockChain based on SHA-256 Hash function with customizable difficulty",
         github: "https://github.com/crudybagger/BlockChain",
         live: "https://sarang.nitw.in/BlockChain/",
-        tags: ["Node.js", "JavaScript"]
+        tags: ["Node.js", "JavaScript", "Backend"]
     },
 ]
+
+const availableTags = ["JavaScript", "Machine Learning", "Node.js", "Backend", "Frontend"];
+
+
 
 var projects = document.getElementsByClassName("project-no-images")[0];
 var projectContainer = document.createElement("div");
@@ -31,15 +35,16 @@ projectContainer.className = "container";
 var heading = document.createElement("div");
 heading.className = "heading";
 var h2 = document.createElement("h2");
-h2.innerHTML = "My Projects&nbsp;";
+h2.innerHTML = "My Projects";
 heading.appendChild(h2);
 // Add a button to select the type of projects to be displayed based on tags
-const availableTags = ["JavaScript", "Machine Learning", "Node.js"];
 let selectedTags = []; // Default
 let showAll = true;
 
+var buttonToolbar = document.createElement("div");
+buttonToolbar.className = "btn-toolbar justify-content-center";
 var buttonGroup = document.createElement("div");
-buttonGroup.className = "btn-group";
+buttonGroup.className = "btn-group justify-content-center";
 buttonGroup.role = "group";
 
 for(var i = 0; i < availableTags.length; i++) {
@@ -50,11 +55,13 @@ for(var i = 0; i < availableTags.length; i++) {
     button.innerHTML = tag;
     button.onclick = function() {
         showAll = false;
+        Allbutton.className = "btn btn-outline-primary btn-sm";
         if (selectedTags.includes(this.innerHTML)) {
             this.className = "btn btn-outline-primary btn-sm";
             selectedTags.splice(selectedTags.indexOf(this.innerHTML), 1);
             if (selectedTags.length == 0) {
                 showAll = true;
+                Allbutton.className = "btn btn-outline-primary btn-sm active";
             }
         } else {
             this.className = "btn btn-primary btn-sm";
@@ -65,7 +72,28 @@ for(var i = 0; i < availableTags.length; i++) {
     }
     buttonGroup.appendChild(button);
 }
-heading.appendChild(buttonGroup);
+buttonToolbar.appendChild(buttonGroup);
+// make a button to show all projects
+var buttonGroup2 = document.createElement("div");
+buttonGroup2.className = "btn-group";
+var Allbutton = document.createElement("button");
+Allbutton.type = "button";
+Allbutton.className = "btn btn-outline-primary btn-sm active";
+Allbutton.innerHTML = "All";
+Allbutton.onclick = function() {
+    if (showAll) return;
+    showAll = true;
+    selectedTags = [];
+    for(var i = 0; i < buttonGroup.children.length; i++) {
+        buttonGroup.children[i].className = "btn btn-outline-primary btn-sm";
+    }
+    this.className = "btn btn-outline-primary btn-sm active";
+    renderProjects();
+}
+buttonGroup2.appendChild(Allbutton);
+buttonToolbar.appendChild(buttonGroup2);
+
+heading.appendChild(buttonToolbar);
 
 
 projectContainer.appendChild(heading);

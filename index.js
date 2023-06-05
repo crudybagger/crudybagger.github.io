@@ -20,9 +20,16 @@ const Projects = [
         live: "https://sarang.nitw.in/BlockChain/",
         tags: ["Node.js", "JavaScript", "Backend"]
     },
+    {
+        name: "TODO List CTF Challenge",
+        description: "A CTF challenge to find the flag by exploiting a TODO list web application",
+        github: "https://github.com/crudybagger/TODO-challenge-frontend",
+        live: "https://todo-eta-flame.vercel.app/",
+        tags: ["React JS", "Backend", "Frontend", "Security"]
+    }
 ]
 
-const availableTags = ["JavaScript", "Machine Learning", "Node.js", "Backend", "Frontend"];
+const availableTags = ["JavaScript", "React JS", "Machine Learning", "Node.js", "Backend", "Frontend"];
 
 
 

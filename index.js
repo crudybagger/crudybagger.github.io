@@ -25,7 +25,14 @@ const Projects = [
         description: "A CTF challenge to find the flag by exploiting a TODO list web application",
         github: "https://github.com/crudybagger/TODO-challenge-frontend",
         live: "https://todo-eta-flame.vercel.app/",
-        tags: ["React JS", "Backend", "Frontend", "Security"]
+        tags: [, "Backend", "Frontend", "Security"]
+    },
+    {
+        name: "Arrange the tiles game with solver",
+        description: "A 15 Tile Game made in React included with Solver to give optimized solution",
+        github: "",
+        live: "https://sequence-game.vercel.app/",
+        tags: ["React JS", "JavaScript", "Frontend"]
     }
 ]
 

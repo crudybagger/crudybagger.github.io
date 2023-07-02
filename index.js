@@ -32,7 +32,6 @@ const Projects = [
 const availableTags = ["JavaScript", "React JS", "Machine Learning", "Node.js", "Backend", "Frontend"];
 
 
-
 var projects = document.getElementsByClassName("project-no-images")[0];
 var projectContainer = document.createElement("div");
 projectContainer.className = "container";

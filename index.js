@@ -57,8 +57,18 @@ let showAll = true;
 var buttonToolbar = document.createElement("div");
 buttonToolbar.className = "btn-toolbar justify-content-center";
 var buttonGroup = document.createElement("div");
-buttonGroup.className = "btn-group justify-content-center";
+buttonGroup.className = "btn-group-sm justify-content-center select-tags";
+// if(screen.width < 500) {
+//     buttonGroup.classList.add("btn-group-sm");
+// }
+// else {
+//     buttonGroup.classList.add("btn-group");
+// }
 buttonGroup.role = "group";
+
+var Allbutton = document.createElement("button");
+Allbutton.type = "button";
+
 
 for(var i = 0; i < availableTags.length; i++) {
     var tag = availableTags[i];
@@ -80,18 +90,21 @@ for(var i = 0; i < availableTags.length; i++) {
             this.className = "btn btn-primary btn-sm";
             selectedTags.push(this.innerHTML);
         }
-        console.log(selectedTags);
         renderProjects();
     }
     buttonGroup.appendChild(button);
 }
 buttonToolbar.appendChild(buttonGroup);
+// buttonToolbar.appendChild(document.createElement("br"));
 // make a button to show all projects
 var buttonGroup2 = document.createElement("div");
-buttonGroup2.className = "btn-group";
-var Allbutton = document.createElement("button");
-Allbutton.type = "button";
+buttonGroup2.className = "btn-group all-button-group";
+// if(screen.width < 500) {
+//     buttonGroup2.classList.add("btn-group-sm");
+// }
+
 Allbutton.className = "btn btn-outline-primary btn-sm active";
+Allbutton.id = "all-button";
 Allbutton.innerHTML = "All";
 Allbutton.onclick = function() {
     if (showAll) return;
@@ -112,7 +125,7 @@ heading.appendChild(buttonToolbar);
 projectContainer.appendChild(heading);
 
 var row = document.createElement("div");
-row.className = "row";
+row.className = "row project-row";
 const renderProjects = () => {
     // clear row
     row.innerHTML = "";
@@ -165,12 +178,40 @@ projectContainer.appendChild(row);
     //         <div class="tags">JavaScript</div>
     //     </div>
     // </div>
-
-
-
-
-
-
-
-
 projects.appendChild(projectContainer);
+
+// const body = document.getElementsByTagName("body")[0];jj
+const navbar = document.getElementById("navbar");
+const behind = document.getElementsByClassName("background")[0];
+const foreground = document.getElementsByClassName("foreground")[0];
+const scrollButtons = document.getElementsByClassName("scroll-button");
+const html = document.getElementsByTagName("html")[0];
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+        foreground.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+        foreground.classList.remove("scrolled");
+    }
+    // translate the position of behind element
+    behind.style.transform = `translate(-50%,-${50+(window.scrollY/20)}%)`;
+    if(window.scrollY > 50) {
+        behind.style.opacity = "0.2";
+    } else {
+        behind.style.opacity = "1";
+    }
+    if(window.scrollY > 500) {
+        behind.style.display = "none";
+    } else {
+        behind.style.display = "block";
+    }
+})
+for(let i = 0; i < scrollButtons.length; i++) {
+    scrollButtons[i].addEventListener("click", () => {
+        window.scrollTo({
+            top: scrollButtons[i].attributes.getNamedItem("scrollValue").value,
+            behavior: "auto"
+        });
+    });
+}

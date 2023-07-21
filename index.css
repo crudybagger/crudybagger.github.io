@@ -1,0 +1,122 @@
+body {
+    color: rgb(99, 99, 99);
+    font-family: 'Montserrat', sans-serif;
+}
+body::-webkit-scrollbar {
+    display: none;
+  }
+h4 a {
+    text-decoration: none;
+    color: rgb(99, 99, 99);
+}
+a {
+    text-decoration: none;
+    /* color: black; */
+}
+.portfolio-block {
+    padding: 0;
+}
+#hobbies-group h2, #hobbies-group div{
+    margin-bottom: 0;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 100px;
+    height: 50px;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+    background-image: none;
+}
+#navbar::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #7f70f5, #0ea0ff);;
+    transition: all 800ms;
+    opacity: 0;
+}
+#navbar.scrolled::after {
+    opacity: 1;
+    
+}
+#navbar.scrolled {
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+}
+#navbar.scrolled a {
+    color: #00ff9d;
+}
+.resume-button {
+    z-index: 101;
+    padding: 10px 20px;
+    margin: 10px 0;
+    justify-self: center;
+    transition: all 600ms;
+}
+.resume-button:hover {
+    color: #00ff9d;
+    cursor: pointer;
+}
+
+.background {
+    display: block;
+    position: fixed;
+    margin-top: 5em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s;
+    opacity: 1;
+}
+/* .background::after {
+    position: fixed;
+    margin-top: 5em;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #7f70f5, #0ea0ff);;
+    transition: all 0.5s;
+    opacity: 0;
+} */
+
+.background.scrolled {
+    opacity: 0;
+    display: none;
+}
+
+
+.foreground {
+    margin-top: 25em;
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+    transition: all 600ms;
+}
+.foreground.scrolled {
+    background-color: #effffe;
+}
+
+.heading h2{
+    margin-bottom: 35px !important;
+}
+
+footer {
+    padding: 10px !important;
+}
+
+
+.select-tags {
+    flex-basis: 100%;
+}
+#all-button {
+    margin-top: 10px;
+}

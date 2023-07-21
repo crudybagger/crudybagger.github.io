@@ -73,23 +73,25 @@ Allbutton.type = "button";
 for(var i = 0; i < availableTags.length; i++) {
     var tag = availableTags[i];
     var button = document.createElement("button");
-    button.type = "button";
+    button.type = "checkbox";
     button.className = "btn btn-outline-primary btn-sm";
     button.innerHTML = tag;
     button.onclick = function() {
         showAll = false;
         Allbutton.className = "btn btn-outline-primary btn-sm";
+        // if the button is already selected, remove it
         if (selectedTags.includes(this.innerHTML)) {
             this.className = "btn btn-outline-primary btn-sm";
             selectedTags.splice(selectedTags.indexOf(this.innerHTML), 1);
             if (selectedTags.length == 0) {
                 showAll = true;
-                Allbutton.className = "btn btn-outline-primary btn-sm active";
+                Allbutton.className = "btn btn-primary btn-sm";
             }
         } else {
             this.className = "btn btn-primary btn-sm";
             selectedTags.push(this.innerHTML);
         }
+        this.blur()
         renderProjects();
     }
     buttonGroup.appendChild(button);
@@ -103,17 +105,18 @@ buttonGroup2.className = "btn-group all-button-group";
 //     buttonGroup2.classList.add("btn-group-sm");
 // }
 
-Allbutton.className = "btn btn-outline-primary btn-sm active";
+Allbutton.className = "btn btn-primary btn-sm";
 Allbutton.id = "all-button";
 Allbutton.innerHTML = "All";
 Allbutton.onclick = function() {
+    this.blur()
     if (showAll) return;
     showAll = true;
     selectedTags = [];
     for(var i = 0; i < buttonGroup.children.length; i++) {
         buttonGroup.children[i].className = "btn btn-outline-primary btn-sm";
     }
-    this.className = "btn btn-outline-primary btn-sm active";
+    this.className = "btn btn-primary btn-sm";
     renderProjects();
 }
 buttonGroup2.appendChild(Allbutton);

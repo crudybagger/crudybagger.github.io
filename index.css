@@ -1,13 +1,14 @@
 body {
-    color: rgb(99, 99, 99);
+    /* color: rgb(99, 99, 99); */
     font-family: 'Montserrat', sans-serif;
+    font-size: small;
 }
 body::-webkit-scrollbar {
     display: none;
   }
 h4 a {
     text-decoration: none;
-    color: rgb(99, 99, 99);
+    color: rgb(255, 255, 255);
 }
 a {
     text-decoration: none;
@@ -63,11 +64,32 @@ a {
     color: #00ff9d;
     cursor: pointer;
 }
-
+/* .btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.btn:focus:not(:focus-visible) {
+    outline: 0 !important;
+    box-shadow: none !important; 
+} */
+/* .btn:hover:not() {
+    cursor: pointer;
+} */
+@media (hover: none) {
+    .btn-outline-primary {
+        color: #0ea0ff !important;
+        background-color: #effffe !important;
+    }
+    .btn-primary {
+        background-color: #0ea0ff !important;
+        color: #effffe !important;
+    }
+}
 .background {
     display: block;
     position: fixed;
     margin-top: 5em;
+    margin-bottom: 5em;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -95,7 +117,8 @@ a {
 
 
 .foreground {
-    margin-top: 25em;
+    padding: 10px !important;
+    margin-top: 30em;
     position: relative;
     width: 100%;
     background-color: #ffffff;
@@ -106,7 +129,7 @@ a {
 }
 
 .heading h2{
-    margin-bottom: 35px !important;
+    margin: 35px 0 !important;
 }
 
 footer {

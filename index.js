@@ -190,7 +190,11 @@ const foreground = document.getElementsByClassName("foreground")[0];
 const scrollButtons = document.getElementsByClassName("scroll-button");
 const html = document.getElementsByTagName("html")[0];
 window.addEventListener("scroll", () => {
+    scrollButtons[0].classList.add("active");
+    scrollButtons[1].classList.remove("active");
     if (window.scrollY > 50) {
+        scrollButtons[0].classList.remove("active");
+        scrollButtons[1].classList.add("active");
         navbar.classList.add("scrolled");
         foreground.classList.add("scrolled");
     } else {
@@ -198,7 +202,7 @@ window.addEventListener("scroll", () => {
         foreground.classList.remove("scrolled");
     }
     // translate the position of behind element
-    behind.style.transform = `translate(-50%,-${50+(window.scrollY/20)}%)`;
+    behind.style.transform = `translate(-50%,-${50+(window.scrollY/30)}%)`;
     if(window.scrollY > 50) {
         behind.style.opacity = "0.2";
     } else {
@@ -212,6 +216,7 @@ window.addEventListener("scroll", () => {
 })
 for(let i = 0; i < scrollButtons.length; i++) {
     scrollButtons[i].addEventListener("click", () => {
+        scrollButtons[i].classList.add("active");
         window.scrollTo({
             top: scrollButtons[i].attributes.getNamedItem("scrollValue").value,
             behavior: "auto"

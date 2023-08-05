@@ -60,6 +60,11 @@ a {
     justify-self: center;
     transition: all 600ms;
 }
+.resume-button.active{
+    border-bottom: 1px solid #0ea0ff;
+}
+
+
 .resume-button:hover {
     color: #00ff9d;
     cursor: pointer;

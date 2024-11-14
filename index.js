@@ -3,21 +3,21 @@ const Projects = [
         name: "NeuroEvolution Flappy Bird",
         description: "A NeuroEvolution driven self learning version of classic game Flappy Bird",
         github: "https://github.com/crudybagger/NeuroEvolution-Flappy-Bird",
-        live: "https://sarang.nitw.in/flappy/",
+        live: "https://crudybagger.github.io/flappy/",
         tags: ["JavaScript", "Machine Learning", "Frontend"]
     },
     {
         name: "Highlighter",
         description: "A chrome extension to highlight any text on any website with any color you like",
         github: "https://github.com/crudybagger/Highlighter",
-        live: "https://sarang.nitw.in/Highlighter/",
+        live: "https://crudybagger.github.io/Highlighter/",
         tags: ["JavaScript", "Backend", "Chrome Extension"]
     },
     {
         name: "BlockChain",
         description: "A useful API to build a BlockChain based on SHA-256 Hash function with customizable difficulty",
         github: "https://github.com/crudybagger/BlockChain",
-        live: "https://sarang.nitw.in/BlockChain/",
+        live: "https://crudybagger.github.io/BlockChain/",
         tags: ["Node.js", "JavaScript", "Backend"]
     },
     {
@@ -177,7 +177,7 @@ projectContainer.appendChild(row);
     //         <h3>NeuroEvolution Flappy Bird</h3>
     //         <h4>A NeuroEvolution driven self learning version of classic game Flappy Bird</h4>
     //         <a class="btn btn-outline-primary btn-sm" role="button" href="https://github.com/crudybagger/NeuroEvolution-Flappy-Bird" target="_blank">Github</a>
-    //         <a class="btn btn-outline-primary btn-sm" role="button" href="https://sarang.nitw.in/flappy/" target="_blank">Live</a>
+    //         <a class="btn btn-outline-primary btn-sm" role="button" href="https://crudybagger.github.io/flappy/" target="_blank">Live</a>
     //         <div class="tags">JavaScript</div>
     //     </div>
     // </div>

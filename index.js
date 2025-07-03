@@ -7,6 +7,13 @@ const Projects = [
         tags: ["JavaScript", "Machine Learning", "Frontend"]
     },
     {
+        name: "Find the Cat",
+        description: "A mildly infuriating but fun game of finding the invisible cat, by hearing for it's sound",
+        github: "https://github.com/crudybagger/find-the-cat",
+        live: "https://crudybagger.github.io/find-the-cat/",
+        tags: ["JavaScript", "Frontend"]
+    },
+    {
         name: "Highlighter",
         description: "A chrome extension to highlight any text on any website with any color you like",
         github: "https://github.com/crudybagger/Highlighter",

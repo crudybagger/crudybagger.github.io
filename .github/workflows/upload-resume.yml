@@ -1,0 +1,38 @@
+name: Resume Upload and Update
+
+on:
+  push:
+    paths:
+      - 'upload/*.pdf'
+
+jobs:
+  process_resume:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set variables
+        id: vars
+        run: |
+          echo "RESUME_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+          echo "UPLOAD_PDF=$(ls upload/*.pdf | head -1)" >> $GITHUB_ENV
+
+      - name: Backup existing Resume.pdf if present
+        run: |
+          if [ -f assets/Resume.pdf ]; then
+            mv "assets/Resume.pdf" "assets/Resume_${{ env.RESUME_DATE }}.pdf"
+            echo "Renamed assets/Resume.pdf to assets/Resume_${{ env.RESUME_DATE }}.pdf"
+          else
+            echo "No existing Resume.pdf to backup."
+          fi
+
+      - name: Move and rename uploaded PDF to assets/Resume.pdf
+        run: |
+          mv "$UPLOAD_PDF" assets/Resume.pdf
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update Resume.pdf via workflow"
+          branch: ${{ github.ref }}

@@ -94,12 +94,17 @@ function createFilterButtons() {
     const button = document.createElement("button");
     button.className = "filter-btn";
     button.textContent = filter;
+    button.setAttribute("aria-pressed", String(filter === selectedFilter));
     if (filter === selectedFilter) button.classList.add("active");
 
     button.addEventListener("click", () => {
       selectedFilter = filter;
-      document.querySelectorAll(".filter-btn").forEach((item) => item.classList.remove("active"));
+      document.querySelectorAll(".filter-btn").forEach((item) => {
+        item.classList.remove("active");
+        item.setAttribute("aria-pressed", "false");
+      });
       button.classList.add("active");
+      button.setAttribute("aria-pressed", "true");
       renderProjects();
     });
 
